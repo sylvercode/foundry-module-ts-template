@@ -21,7 +21,7 @@ If you have just created a new project with this template there are a few change
 
 ### Automatic script
 
-Alternatively, you can run [Setup-Repo.ps1](Setup-Repo.ps1) the powershell script to make the changes for you. 
+Alternatively, you can run the powershell script [Setup-Repo.ps1](Setup-Repo.ps1) to make the changes for you. 
 
 ```pwsh
 ./Setup-Repo.ps1 module-id "Module Title" "Module description" "Author Name" "Author Email" [ModuleClassName] [-WhatIf]
