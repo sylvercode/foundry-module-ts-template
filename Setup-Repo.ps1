@@ -111,12 +111,13 @@ $OperationSteps = @(
 )
 
 foreach ($OpStep in $OperationSteps) {
-    Write-Debug "Processing file: $($OpStep.FilePath) in directory: $PSScriptRoot"
     $FilePath = Join-Path -Path $PSScriptRoot -ChildPath $OpStep.FilePath
+    Write-Information "Processing file: $FilePath"
     if (Test-Path -Path $FilePath) {
         $OriginalContent = Get-Content -Path $FilePath -Raw
         $NewContent = $OriginalContent
         foreach ($Action in $OpStep.RepalcementActions) {
+            Write-Verbose "Replacing '$($Action.key)' with '$($Action.value)' in $FilePath"
             $NewContent = $NewContent -replace $Action.key, $Action.value
         }
         
@@ -143,6 +144,7 @@ foreach ($OpStep in $OperationSteps) {
 
 $LaunchConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/launch.json"
 if ($PSCmdlet.ShouldProcess($LaunchConfigPath, "Create default launch configuration")) {
+    Write-Information "Creating default launch configuration at $LaunchConfigPath"
     $LaunchContent = `
         @"
 {
@@ -166,6 +168,31 @@ if ($PSCmdlet.ShouldProcess($LaunchConfigPath, "Create default launch configurat
 }
 "@
     Set-Content -Path $LaunchConfigPath -Value $LaunchContent
+}
+
+$TaskConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/tasks.json"
+if ($PSCmdlet.ShouldProcess($TaskConfigPath, "Create default task configuration")) {
+    Write-Information "Creating default task configuration at $TaskConfigPath"
+    $TaskContent = `
+        @"
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "label": "npm: build",
+            "detail": "tsc && vite build"
+        }
+    ]
+}
+"@
+    Set-Content -Path $TaskConfigPath -Value $TaskContent
 }
 
 if (-not $WhatIfPreference) {
