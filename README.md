@@ -10,14 +10,15 @@ Out of the box this template adds a button to the top of the Actors directory. C
 
 ### dev container
 
-A dev container [configuration](.devcontainer/devcontainer.json) ([see][5]) is provided. It is recomemnded to make a personal configuration with mounts to you foundry installation and data folder for easier testing and debuggin. copy the `.devcontainer/devcontainer.json` to `.devcontainer/personal/devcontainer.json` and follow instruction in comments. This personal folder is set to be ignored by git.
+A dev container [configuration](.devcontainer/devcontainer.json) ([see][5]) is provided. It is recomemnded to make a personal configuration with mounts to you foundry installation and data folder for easier testing and debuggin. copy the `.devcontainer/devcontainer.json` to `.devcontainer/personal/devcontainer.json` and follow instruction in comments. This personal folder and suggested mount point are set to be ignored by git.
 
 ## Todo
 
 If you have just created a new project with this template there are a few changes you should make to start:
 
 - [ ] Update the values in `src/module.json`. At minimum you should change `id`, `title`, and `description`. It is also recommended that you add a `contacts` field.
-- [ ] Start using a new module prefix for localizations. The localizations in `src/languages/en.json` are all prefixed with `MYMODULE.` to distinguish them from any other installed translations. You should choose a new prefix for your module and use it for any new translations you add, and remove the existing translation entries as they become unnecessary.
+- [ ] Start using a new module prefix for localizations. The localizations in `src/languages/en.json` are all prefixed with `TODO-MY-MODULE.` to distinguish them from any other installed translations. You should choose a new prefix for your module and use it for any new translations you add, and remove the existing translation entries as they become unnecessary.
+- [ ] Change `TodoMyModule` class in types
 
 ### Automatic script
 
