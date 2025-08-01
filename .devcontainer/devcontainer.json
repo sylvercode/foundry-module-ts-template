@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
 	"name": "sylvercode-enhance-limited-wall",
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm"
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
 	// If you want to run and debug in a foundry server:
 	// - Copy this to : .devcontainer/personal/devcontainer.json
 	//   - It is ignored by git.
@@ -28,6 +28,7 @@
 	// 		"type": "bind"
 	// 	}
 	// ],
-	// "features": {
-	// }
+	"features": {
+		"ghcr.io/devcontainers/features/powershell:1": {}
+	}
 }
