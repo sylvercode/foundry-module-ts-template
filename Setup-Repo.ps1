@@ -141,6 +141,33 @@ foreach ($OpStep in $OperationSteps) {
     }
 }
 
+$LaunchConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/launch.json"
+if ($PSCmdlet.ShouldProcess($LaunchConfigPath, "Create default launch configuration")) {
+    $LaunchContent = `
+        @"
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Launch FoundryVTT",
+            "url": "http://localhost:30000/",
+            "pathMapping": {
+                "/modules/$Id": "`${workspaceFolder}/dist",
+                "/modules/": "`${workspaceFolder}/foundry/modules",
+                "/": "`${workspaceFolder}/foundry/app/public"
+            }
+        }
+    ]
+}
+"@
+    Set-Content -Path $LaunchConfigPath -Value $LaunchContent
+}
+
 if (-not $WhatIfPreference) {
-    Write-Information "You can now delete this script (Setup-Repo)" -InformationAction Continue
+    Write-Information "You can now delete this script (Setup-Repo.ps1)" -InformationAction Continue
 }
