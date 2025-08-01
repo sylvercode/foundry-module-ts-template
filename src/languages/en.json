@@ -1,6 +1,6 @@
 {
-  "MYMODULE.dog-browser": "Dog browser",
-  "MYMODULE.dogs": "Dogs",
-  "MYMODULE.fetch-random-dog": "Fetch random dog photo",
-  "MYMODULE.random-dog-alt": "Image of a random dog"
+  "TODO-MODULE-ID.dog-browser": "Dog browser",
+  "TODO-MODULE-ID.dogs": "Dogs",
+  "TODO-MODULE-ID.fetch-random-dog": "Fetch random dog photo",
+  "TODO-MODULE-ID.random-dog-alt": "Image of a random dog"
 }

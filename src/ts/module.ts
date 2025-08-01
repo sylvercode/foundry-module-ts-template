@@ -1,25 +1,30 @@
 // Do not remove this import. If you do Vite will think your styles are dead
 // code and not include them in the build output.
-import "../styles/style.scss";
+import "../styles/module.scss";
 import DogBrowser from "./apps/dogBrowser";
-import { moduleId } from "./constants";
-import { MyModule } from "./types";
+import { moduleId, getGame } from "./constants";
+import { TodoMyModule } from "./types";
 
-let module: MyModule;
+let module: TodoMyModule;
 
 Hooks.once("init", () => {
   console.log(`Initializing ${moduleId}`);
 
-  module = (game as Game).modules.get(moduleId) as MyModule;
+  module = getGame().modules.get(moduleId) as TodoMyModule;
   module.dogBrowser = new DogBrowser();
 });
 
-Hooks.on("renderActorDirectory", (_: Application, html: JQuery) => {
-  const button = $(
-    `<button class="cc-sidebar-button" type="button">🐶</button>`
-  );
-  button.on("click", () => {
-    module.dogBrowser.render(true);
+Hooks.on("renderActorDirectory", (_: ActorDirectory, html: HTMLElement) => {
+  const actionButtons = html.querySelector(".directory-header .action-buttons");
+  if (!actionButtons) throw new Error("Could not find action buttons in Actor Directory");
+
+  const button = document.createElement("button");
+  button.className = "cc-sidebar-button";
+  button.type = "button";
+  button.textContent = "🐶";
+  button.addEventListener("click", () => {
+    module.dogBrowser.render({ force: true });
   });
-  html.find(".directory-header .action-buttons").append(button);
+
+  actionButtons.appendChild(button);
 });

@@ -1,0 +1,33 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "sylvercode-enhance-limited-wall",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm"
+	// If you want to run and debug in a foundry server:
+	// - Copy this to : .devcontainer/personal/devcontainer.json
+	//   - It is ignored by git.
+	// - Update the paths to your local foundry installation and data folder.
+	// - Uncomment the mounts and add your favorite features below.
+	// "mounts": [
+	// 	{
+	// 		// Bind the build directory to the module folder in foundry.
+	// 		"source": "<<ABSOLUTE_PATH_TO_DATA_FOLDER>>/Data/modules/sylvercode-enhance-limited-wall",
+	// 		"target": "${containerWorkspaceFolder}/dist",
+	// 		"type": "bind"
+	// 	},
+	// 	{
+	// 		// Give access to foundry code in debuger.
+	// 		"source": "<<ABSOLUTE_PATH_TO_FOUNDRY_FOLDER>>",
+	// 		"target": "${containerWorkspaceFolder}/foundry/app",
+	// 		"type": "bind"
+	// 	},
+	// 	{
+	// 		// Give access to foundry module codes in debuger.
+	// 		"source": "<<ABSOLUTE_PATH_TO_DATA_FOLDER>>/Data/modules",
+	// 		"target": "${containerWorkspaceFolder}/foundry/modules",
+	// 		"type": "bind"
+	// 	}
+	// ],
+	// "features": {
+	// }
+}
