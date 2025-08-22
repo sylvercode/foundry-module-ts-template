@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Personal developement definitions and external foundry source.
+.devcontainer/personal/*
+foundry

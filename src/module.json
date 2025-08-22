@@ -1,17 +1,34 @@
 {
-  "$schema": "https://json.schemastore.org/foundryvtt-manifest.json",
-  "id": "foundry-module-ts",
-  "title": "Typescript Template Module",
-  "description": "A template module using Typescript. You should change name, title, and description in module.json.",
-  "version": "1.0.0",
+  "id": "todo-module-id",
+  "title": "todo-module-title",
+  "description": "todo-module-description",
+  "version": "0.0.1",
   "packs": [],
   "system": [],
   "dependencies": [],
   "scripts": [],
   "compatibility": {
-    "minimum": "9",
-    "verified": "10",
-    "maximum": "10"
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "todo-module-author-name",
+      "email": "todo-module-author-email",
+      "flags": {}
+    }
+  ],
+  "flags": {
+    "canUpload": true
+  },
+  "relationships": {
+    "recommends": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
   },
   "languages": [
     {
@@ -20,6 +37,10 @@
       "path": "languages/en.json"
     }
   ],
-  "styles": ["style.css"],
-  "esmodules": ["scripts/module.js"]
+  "styles": [
+    "styles/module.css"
+  ],
+  "esmodules": [
+    "scripts/module.js"
+  ]
 }
