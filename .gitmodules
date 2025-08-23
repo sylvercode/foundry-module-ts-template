@@ -1,0 +1,3 @@
+[submodule "libs/fvtt-hook-attacher"]
+	path = libs/fvtt-hook-attacher
+	url = git@github.com:sylvercode/fvtt-hook-attacher.git

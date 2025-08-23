@@ -1,7 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "fvtt-hook-attacher": [
+        "libs/fvtt-hook-attacher/index"
+      ],
+    },
     "types": [
       "fvtt-types",
+    ],
+    "typeRoots": [
+      "node_modules",
+      "libs"
     ],
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -25,6 +35,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "src"
+    "src",
+    "libs"
   ]
 }

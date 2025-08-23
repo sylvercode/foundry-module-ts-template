@@ -1,32 +1,42 @@
-# FoundryVTT Module Template w/ Typescript
+# Foundry VTT Module Template (TypeScript)
 
-This repo is meant to be used as a starting point for creating your own FoundryVTT module with [Typescript][2]. If you are using Github you can get started by clicking the green `Use this template` button in the upper-right.
+This repository is a starting point for creating a Foundry VTT module with TypeScript. If you are using GitHub, click the green "Use this template" button to get started.
 
-Check out [our blog post][4] for a walkthrough of the codebase.
+This template is based on the work of [BringingFire/foundry-module-ts-template](https://github.com/BringingFire/foundry-module-ts-template) with the following changes:
 
-## What's in the box
+- Updated for Foundry V13.
+- Directory structure aligned with the Foundry documentation.
+- Hook methods decentralized into their own components.
 
-Out of the box this template adds a button to the top of the Actors directory. Clicking it brings up a modal with a button that will load a picture of a random dog from the [Dog API][3]. This demonstrates how to perform some common tasks such as render templates and call external APIs, and hopefully provides a decent starting point for developing your own module.
+## What’s included
 
-### dev container
+Out of the box, this template adds a button to the top of the Actors directory. Clicking it opens a modal with a button that loads a random dog image from the [Dog API][3]. This demonstrates common tasks such as rendering templates, calling external APIs, organizing code, and styling with SCSS.
 
-A dev container [configuration](.devcontainer/devcontainer.json) ([see][5]) is provided. It is recomemnded to make a personal configuration with mounts to you foundry installation and data folder for easier testing and debuggin. copy the `.devcontainer/devcontainer.json` to `.devcontainer/personal/devcontainer.json` and follow instruction in comments. This personal folder and suggested mount point are set to be ignored by git.
+## Dev container
 
-## Todo
+A dev container configuration is provided at [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) ([see][5]).
 
-If you have just created a new project with this template there are a few changes you should make to start:
+Recommended: create a personal configuration with mounts to your Foundry installation and data folder for easier testing and debugging. Copy `.devcontainer/devcontainer.json` to `.devcontainer/personal/devcontainer.json` and follow the instructions in the comments. The personal folder and suggested mount points are ignored by git.
 
-- [ ] Update the values in `src/module.json`. At minimum you should change `id`, `title`, and `description`. It is also recommended that you add a `contacts` field.
-- [ ] Start using a new module prefix for localizations. The localizations in `src/languages/en.json` are all prefixed with `TODO-MY-MODULE.` to distinguish them from any other installed translations. You should choose a new prefix for your module and use it for any new translations you add, and remove the existing translation entries as they become unnecessary.
-- [ ] Change `TodoMyModule` class in types
+## Getting started (Todo)
 
-### Automatic script
+If you just created a project from this template, make these changes first:
 
-Alternatively, you can run the powershell script [Setup-Repo.ps1](Setup-Repo.ps1) to make the changes for you. It also generate a default `.vscode/launch.json` and `.vscode/tasks.json` ready to use.
+- [ ] Update values in `src/module.json`. At minimum change `id`, `title`, and `description`. It is also recommended to add a `contacts` field.
+- [ ] Choose a localization prefix. Replace `TODO-MY-MODULE.*` entries in `src/lang/en.json` with your own prefix, and remove entries you do not need.
+- [ ] Rename/update `TodoMyModule` in `src/ts/types.ts` and `src/ts/module.ts`.
+
+## Automated setup
+
+Alternatively, run the PowerShell script [Setup-Repo.ps1](Setup-Repo.ps1) to apply these changes automatically. It also generates default `.vscode/launch.json` and `.vscode/tasks.json`.
 
 ```pwsh
 ./Setup-Repo.ps1 module-id "Module Title" "Module description" "Author Name" "Author Email" [ModuleClassName] [-WhatIf]
 ```
+
+## What next
+
+Create a new Application class and register its hooks in `TodoMyModuleHooks.HOOKS_DEFINITIONS` and/or add an init callback in `TodoMyModuleHooks.ON_INIT_MODULE_CALLBACKS`. See [src/ts/types.ts](./src/ts/types.ts).
 
 [1]: https://foundryvtt.com/
 [2]: https://www.typescriptlang.org/

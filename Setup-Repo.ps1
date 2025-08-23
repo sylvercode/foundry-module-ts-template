@@ -62,7 +62,7 @@ $ClassNameReplacement = [PSCustomObject]@{ key = "TodoMyModule"; value = $ClassN
 
 $OperationSteps = @(
     [PSCustomObject]@{
-        FilePath           = "src/languages/en.json"
+        FilePath           = "src/lang/en.json"
         RepalcementActions = @(
             $UpperCaseKebabReplacement
         )
@@ -74,7 +74,7 @@ $OperationSteps = @(
         )
     },
     [PSCustomObject]@{
-        FilePath           = "src/ts/apps/dogBrowser.ts"
+        FilePath           = "src/ts/apps/dog_browser.ts"
         RepalcementActions = @(
             $UpperCaseKebabReplacement
         )

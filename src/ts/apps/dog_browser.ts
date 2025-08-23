@@ -1,29 +1,63 @@
 import { DeepPartial } from "fvtt-types/utils";
-import { moduleId, getGame } from "../constants";
+import { MODULE_ID } from "../constants";
+import { HookDefinitions } from "fvtt-hook-attacher";
 
-export default class DogBrowser extends
+export interface DogBrowserHandle {
+  dogBrowser: DogBrowser;
+}
+
+let dogBrowserHandle: DogBrowserHandle;
+
+export function onInitHandle(handle: DogBrowserHandle): void {
+  dogBrowserHandle = handle;
+  dogBrowserHandle.dogBrowser = new DogBrowser();
+}
+
+function renderActorDirectory(_: ActorDirectory, html: HTMLElement): void {
+  const actionButtons = html.querySelector(".directory-header .action-buttons");
+  if (!actionButtons) throw new Error("Could not find action buttons in Actor Directory");
+
+  const button = document.createElement("button");
+  button.className = "cc-sidebar-button";
+  button.type = "button";
+  button.textContent = "🐶";
+  button.addEventListener("click", () => {
+    dogBrowserHandle.dogBrowser.render({ force: true });
+  });
+
+  actionButtons.appendChild(button);
+}
+
+export const HOOKS_DEFINITIONS: HookDefinitions = {
+  on: {
+    name: "renderActorDirectory",
+    callback: renderActorDirectory
+  }
+};
+
+class DogBrowser extends
   foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
 
   imageUrl?: string;
 
   override get title(): string {
-    return getGame().i18n?.localize("TODO-MODULE-ID.dog-browser") ?? "Dog Browser";
+    return game.i18n?.localize("TODO-MODULE-ID.dog-browser") ?? "Dog Browser";
   }
 
   static override DEFAULT_OPTIONS = {
-    id: moduleId,
+    id: MODULE_ID,
     position: {
       width: 720,
       height: 720
     },
     actions: {
-      randomizeDog: this.randomizeDog
+      randomizeDog: DogBrowser.randomizeDog
     }
   }
 
   static override PARTS = {
     main: {
-      template: `modules/${moduleId}/templates/dogs.hbs`
+      template: `modules/${MODULE_ID}/templates/dogs.hbs`
     }
   }
 
