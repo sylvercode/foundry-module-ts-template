@@ -21,20 +21,11 @@
   "flags": {
     "canUpload": true
   },
-  "relationships": {
-    "recommends": [
-      {
-        "id": "lib-wrapper",
-        "type": "module",
-        "compatibility": {}
-      }
-    ]
-  },
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "languages/en.json"
+      "path": "lang/en.json"
     }
   ],
   "styles": [

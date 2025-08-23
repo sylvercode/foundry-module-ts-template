@@ -1,3 +1,4 @@
+import path from "node:path";
 import * as fsPromises from "fs/promises";
 import copy from "rollup-plugin-copy";
 import { defineConfig, Plugin } from "vite";
@@ -9,6 +10,11 @@ const githubTag = process.env.GH_TAG;
 console.log(process.env.VSCODE_INJECTION);
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "fvtt-hook-attacher": path.resolve(process.cwd(), "libs/fvtt-hook-attacher/index.ts"),
+    },
+  },
   build: {
     sourcemap: true,
     rollupOptions: {
@@ -24,14 +30,15 @@ export default defineConfig({
     updateModuleManifestPlugin(),
     copy({
       targets: [
-        { src: "src/languages", dest: "dist" },
+        { src: "src/lang", dest: "dist" },
+        { src: "src/packs", dest: "dist" },
         { src: "src/templates", dest: "dist" },
       ],
       hook: "writeBundle",
     }),
     copy({
       targets: [
-        { src: "dist/scripts/assets/*.css", dest: "dist/styles/", rename: "style.css" },
+        { src: "dist/scripts/assets/*.css", dest: "dist/styles/", rename: "module.css" },
       ]
     }),
   ],

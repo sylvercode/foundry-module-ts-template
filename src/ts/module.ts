@@ -1,30 +1,19 @@
 // Do not remove this import. If you do Vite will think your styles are dead
 // code and not include them in the build output.
 import "../styles/module.scss";
-import DogBrowser from "./apps/dogBrowser";
-import { moduleId, getGame } from "./constants";
-import { TodoMyModule } from "./types";
+import { MODULE_ID } from "./constants";
+import { TodoMyModule as Module, TodoMyModuleHooks as ModuleHooks } from "./types";
+import { HooksAttacher } from "fvtt-hook-attacher";
 
-let module: TodoMyModule;
+let module: Module;
 
 Hooks.once("init", () => {
-  console.log(`Initializing ${moduleId}`);
+  console.log(`Initializing ${MODULE_ID}`);
 
-  module = getGame().modules.get(moduleId) as TodoMyModule;
-  module.dogBrowser = new DogBrowser();
+  module = game?.modules?.get(MODULE_ID) as Module;
+  for (const callback of ModuleHooks.onInitModuleCallbacks) {
+    callback(module);
+  }
 });
 
-Hooks.on("renderActorDirectory", (_: ActorDirectory, html: HTMLElement) => {
-  const actionButtons = html.querySelector(".directory-header .action-buttons");
-  if (!actionButtons) throw new Error("Could not find action buttons in Actor Directory");
-
-  const button = document.createElement("button");
-  button.className = "cc-sidebar-button";
-  button.type = "button";
-  button.textContent = "🐶";
-  button.addEventListener("click", () => {
-    module.dogBrowser.render({ force: true });
-  });
-
-  actionButtons.appendChild(button);
-});
+HooksAttacher.attachHooks(ModuleHooks.HOOKS_DEFINITIONS);
