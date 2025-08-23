@@ -14,6 +14,15 @@ Hooks.once("init", () => {
   for (const callback of ModuleHooks.ON_INIT_MODULE_CALLBACKS) {
     callback(module);
   }
+
+  if (!libWrapper) {
+    console.warn("LibWrapper not found. Some features may not work as expected.");
+    return;
+  }
+
+  for (const patch of ModuleHooks.LIBWRAPPER_PATCHS) {
+    libWrapper.register(MODULE_ID, patch.target, patch.fn, patch.type, patch.options);
+  }
 });
 
 HooksAttacher.attachHooks(ModuleHooks.HOOKS_DEFINITIONS);

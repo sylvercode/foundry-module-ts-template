@@ -19,6 +19,10 @@ See the other branchs for variations:
 
 Out of the box, this template adds a button to the top of the Actors directory. Clicking it opens a modal with a button that loads a random dog image from the [Dog API][3]. This demonstrates common tasks such as rendering templates, calling external APIs, organizing code, and styling with SCSS.
 
+### libWrapper
+
+This variation of the template adds support for [libWrapper](https://github.com/ruipin/fvtt-lib-wrapper). It triggers a "PING!" notification when a user pings the canvas. See What next below for how to register wrappers.
+
 ## Dev container
 
 A dev container configuration is provided at [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) ([see][5]).
@@ -44,6 +48,10 @@ Alternatively, run the PowerShell script [Setup-Repo.ps1](Setup-Repo.ps1) to app
 ## What next
 
 Create a new Application class and register its hooks in `TodoMyModuleHooks.HOOKS_DEFINITIONS` and/or add an init callback in `TodoMyModuleHooks.ON_INIT_MODULE_CALLBACKS`. See [src/ts/types.ts](./src/ts/types.ts).
+
+### libWrapper
+
+Define wrapper callbacks in your Application class and add them to `TodoMyModuleHooks.LIBWRAPPER_PATCHS`.
 
 [1]: https://foundryvtt.com/
 [2]: https://www.typescriptlang.org/
