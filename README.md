@@ -8,6 +8,13 @@ This template is based on the work of [BringingFire/foundry-module-ts-template](
 - Directory structure aligned with the Foundry documentation.
 - Hook methods decentralized into their own components.
 
+## Other branchs
+
+See the other branchs for variations:
+
+- **lib-wrapper**: For [libWrapper](https://github.com/ruipin/fvtt-lib-wrapper) template.
+- *more to come*
+
 ## What’s included
 
 Out of the box, this template adds a button to the top of the Actors directory. Clicking it opens a modal with a button that loads a random dog image from the [Dog API][3]. This demonstrates common tasks such as rendering templates, calling external APIs, organizing code, and styling with SCSS.
