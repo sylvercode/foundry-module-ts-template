@@ -11,7 +11,7 @@ Hooks.once("init", () => {
   console.log(`Initializing ${MODULE_ID}`);
 
   module = game?.modules?.get(MODULE_ID) as Module;
-  for (const callback of ModuleHooks.onInitModuleCallbacks) {
+  for (const callback of ModuleHooks.ON_INIT_MODULE_CALLBACKS) {
     callback(module);
   }
 });

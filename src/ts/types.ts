@@ -9,7 +9,7 @@ export interface TodoMyModule
 export type OnInitModuleFunc = (module: TodoMyModule) => void;
 
 export class TodoMyModuleHooks {
-  static onInitModuleCallbacks: Iterable<OnInitModuleFunc> = [
+  static ON_INIT_MODULE_CALLBACKS: Iterable<OnInitModuleFunc> = [
     dogBrowserApp.onInitHandle,
   ];
 
