@@ -1,3 +1,6 @@
 [submodule "libs/fvtt-hook-attacher"]
 	path = libs/fvtt-hook-attacher
 	url = git@github.com:sylvercode/fvtt-hook-attacher.git
+[submodule "libs/fvtt-lib-wrapper-types"]
+	path = libs/fvtt-lib-wrapper-types
+	url = git@github.com:sylvercode/fvtt-lib-wrapper-types
