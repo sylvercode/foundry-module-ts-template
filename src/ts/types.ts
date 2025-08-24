@@ -13,7 +13,7 @@ export class TodoMyModuleHooks {
     dogBrowserApp.onInitHandle,
   ];
 
-  static HOOKS_DEFINITIONS: HookDefinitions = {
-    ...dogBrowserApp.HOOKS_DEFINITIONS,
-  }
+  static HOOKS_DEFINITION_SET: HookDefinitions[] = [
+    dogBrowserApp.HOOKS_DEFINITIONS,
+  ]
 }
