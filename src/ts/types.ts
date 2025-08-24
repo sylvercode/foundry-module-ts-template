@@ -19,7 +19,7 @@ export class TodoMyModuleHooks {
     PingNotifier.LIBWRAPPER_PATCHS,
   );
 
-  static HOOKS_DEFINITIONS: HookDefinitions = {
-    ...dogBrowserApp.HOOKS_DEFINITIONS,
-  }
+  static HOOKS_DEFINITION_SET: HookDefinitions[] = [
+    dogBrowserApp.HOOKS_DEFINITIONS,
+  ]
 }
