@@ -41,7 +41,7 @@ class DogBrowser extends
   imageUrl?: string;
 
   override get title(): string {
-    return game.i18n?.localize("TODO-MODULE-ID.dog-browser") ?? "Dog Browser";
+    return game.i18n?.localize("TODO-MODULE-ID.dog-app.dog-browser") ?? "Dog Browser";
   }
 
   static override DEFAULT_OPTIONS = {
