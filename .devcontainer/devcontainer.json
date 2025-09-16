@@ -30,5 +30,6 @@
 	// ],
 	"features": {
 		"ghcr.io/devcontainers/features/powershell:1": {}
-	}
+	},
+	"postCreateCommand": "npm install && git submodule update --init --recursive"
 }
