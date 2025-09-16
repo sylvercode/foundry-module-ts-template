@@ -4,20 +4,25 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch submodules
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: 18
-
+          node-version: 22.16
+      
       - name: Install dependencies
-        run: yarn
+        run: npm install
 
       - name: Extract tag version number
         id: get_version
@@ -28,7 +33,7 @@ jobs:
           MODULE_VERSION: ${{steps.get_version.outputs.version-without-v}}
           GH_PROJECT: ${{github.repository}}
           GH_TAG: ${{github.event.release.tag_name}}
-        run: yarn build
+        run: npm run build
 
       - name: Create zip archive
         working-directory: dist

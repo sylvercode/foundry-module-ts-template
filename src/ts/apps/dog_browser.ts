@@ -28,12 +28,12 @@ function renderActorDirectory(_: ActorDirectory, html: HTMLElement): void {
   actionButtons.appendChild(button);
 }
 
-export const HOOKS_DEFINITIONS: HookDefinitions = {
+export const HOOKS_DEFINITIONS: Iterable<HookDefinitions> = [{
   on: {
     name: "renderActorDirectory",
     callback: renderActorDirectory
   }
-};
+}];
 
 class DogBrowser extends
   foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {

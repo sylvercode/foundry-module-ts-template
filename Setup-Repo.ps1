@@ -80,6 +80,12 @@ $OperationSteps = @(
         )
     },
     [PSCustomObject]@{
+        FilePath           = "src/ts/constants.ts"
+        RepalcementActions = @(
+            $KebabReplacement
+        )
+    },
+    [PSCustomObject]@{
         FilePath           = "src/ts/module.ts"
         RepalcementActions = @(
             $ClassNameReplacement
@@ -88,7 +94,8 @@ $OperationSteps = @(
     [PSCustomObject]@{
         FilePath           = "src/ts/types.ts"
         RepalcementActions = @(
-            $ClassNameReplacement
+            $ClassNameReplacement,
+            [PSCustomObject]@{ key = "todo-module-title"; value = $Title }
         )
     },
     [PSCustomObject]@{
@@ -194,6 +201,19 @@ if ($PSCmdlet.ShouldProcess($TaskConfigPath, "Create default task configuration"
 "@
     Set-Content -Path $TaskConfigPath -Value $TaskContent
 }
+
+$TaskConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/settings.json"
+if ($PSCmdlet.ShouldProcess($TaskConfigPath, "Create default settings configuration")) {
+    Write-Information "Creating default settings configuration at $TaskConfigPath"
+    $TaskContent = `
+        @"
+{
+    "npm.packageManager": "npm"
+}
+"@
+    Set-Content -Path $TaskConfigPath -Value $TaskContent
+}
+
 
 if (-not $WhatIfPreference) {
     Write-Information "You can now delete this script (Setup-Repo.ps1)" -InformationAction Continue
