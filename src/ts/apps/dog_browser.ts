@@ -28,12 +28,12 @@ function renderActorDirectory(_: ActorDirectory, html: HTMLElement): void {
   actionButtons.appendChild(button);
 }
 
-export const HOOKS_DEFINITIONS: HookDefinitions = {
+export const HOOKS_DEFINITIONS: Iterable<HookDefinitions> = [{
   on: {
     name: "renderActorDirectory",
     callback: renderActorDirectory
   }
-};
+}];
 
 class DogBrowser extends
   foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
@@ -41,7 +41,7 @@ class DogBrowser extends
   imageUrl?: string;
 
   override get title(): string {
-    return game.i18n?.localize("TODO-MODULE-ID.dog-browser") ?? "Dog Browser";
+    return game.i18n?.localize("TODO-MODULE-ID.dog-app.dog-browser") ?? "Dog Browser";
   }
 
   static override DEFAULT_OPTIONS = {
