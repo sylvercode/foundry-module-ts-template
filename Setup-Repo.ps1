@@ -115,6 +115,12 @@ $OperationSteps = @(
             [PSCustomObject]@{ key = "todo-module-description"; value = $Description }
         )
     }
+    [PSCustomObject]@{
+        FilePath           = ".devcontainer/devcontainer.json"
+        RepalcementActions = @(
+            $KebabReplacement
+        )
+    }
 )
 
 foreach ($OpStep in $OperationSteps) {
