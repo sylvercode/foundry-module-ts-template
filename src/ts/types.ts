@@ -1,7 +1,7 @@
 import * as dogBrowserApp from "./apps/dog_browser";
+import * as PingNotifier from "./apps/ping_notifer";
 import type { LibWrapperWrapperDefinitions } from "fvtt-lib-wrapper-types";
 import { HookDefinitions } from "fvtt-hook-attacher";
-import { PingNotifier } from "./apps/ping_notifer";
 
 /**
  * Interface for the todo-module-title module, extending Foundry's Module interface.
@@ -28,9 +28,12 @@ export class TodoMyModuleHooks {
     dogBrowserApp.onInitHandle,
   ];
 
-  static LIBWRAPPER_PATCHS: Iterable<LibWrapperWrapperDefinitions> = Array.from(
-    PingNotifier.LIBWRAPPER_PATCHS,
-  );
+  /**
+   * Iterable of libWrapper patch definitions to be registered.
+   */
+  static LIBWRAPPER_PATCHS: Iterable<LibWrapperWrapperDefinitions> = [
+    ...PingNotifier.LIBWRAPPER_PATCHS,
+  ];
 
   /**
    * Set of hook definitions to be attached.
