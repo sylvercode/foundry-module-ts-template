@@ -148,7 +148,13 @@ foreach ($OpStep in $OperationSteps) {
         Write-Error "File not found: $FilePath"
     }
 }
-
+$VscodeDir = Join-Path -Path $PSScriptRoot -ChildPath ".vscode"
+if (-not (Test-Path -Path $VscodeDir)) {
+    if ($PSCmdlet.ShouldProcess($VscodeDir, "Create .vscode directory")) {
+        Write-Information "Creating .vscode directory at $VscodeDir"
+        New-Item -Path $VscodeDir -ItemType Directory | Out-Null
+    }
+}
 $LaunchConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/launch.json"
 if ($PSCmdlet.ShouldProcess($LaunchConfigPath, "Create default launch configuration")) {
     Write-Information "Creating default launch configuration at $LaunchConfigPath"
