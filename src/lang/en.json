@@ -1,6 +1,10 @@
 {
-  "TODO-MODULE-ID.dog-browser": "Dog browser",
-  "TODO-MODULE-ID.dogs": "Dogs",
-  "TODO-MODULE-ID.fetch-random-dog": "Fetch random dog photo",
-  "TODO-MODULE-ID.random-dog-alt": "Image of a random dog"
+  "TODO-MODULE-ID": {
+    "dog-app": {
+      "dog-browser": "Dog browser",
+      "dogs": "Dogs",
+      "fetch-random-dog": "Fetch random dog photo",
+      "random-dog-alt": "Image of a random dog"
+    }
+  }
 }

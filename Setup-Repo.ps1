@@ -80,6 +80,12 @@ $OperationSteps = @(
         )
     },
     [PSCustomObject]@{
+        FilePath           = "src/ts/constants.ts"
+        RepalcementActions = @(
+            $KebabReplacement
+        )
+    },
+    [PSCustomObject]@{
         FilePath           = "src/ts/module.ts"
         RepalcementActions = @(
             $ClassNameReplacement
@@ -88,7 +94,8 @@ $OperationSteps = @(
     [PSCustomObject]@{
         FilePath           = "src/ts/types.ts"
         RepalcementActions = @(
-            $ClassNameReplacement
+            $ClassNameReplacement,
+            [PSCustomObject]@{ key = "todo-module-title"; value = $Title }
         )
     },
     [PSCustomObject]@{
@@ -106,6 +113,12 @@ $OperationSteps = @(
         RepalcementActions = @(
             $KebabReplacement,
             [PSCustomObject]@{ key = "todo-module-description"; value = $Description }
+        )
+    }
+    [PSCustomObject]@{
+        FilePath           = ".devcontainer/devcontainer.json"
+        RepalcementActions = @(
+            $KebabReplacement
         )
     }
 )
@@ -141,7 +154,13 @@ foreach ($OpStep in $OperationSteps) {
         Write-Error "File not found: $FilePath"
     }
 }
-
+$VscodeDir = Join-Path -Path $PSScriptRoot -ChildPath ".vscode"
+if (-not (Test-Path -Path $VscodeDir)) {
+    if ($PSCmdlet.ShouldProcess($VscodeDir, "Create .vscode directory")) {
+        Write-Information "Creating .vscode directory at $VscodeDir"
+        New-Item -Path $VscodeDir -ItemType Directory | Out-Null
+    }
+}
 $LaunchConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/launch.json"
 if ($PSCmdlet.ShouldProcess($LaunchConfigPath, "Create default launch configuration")) {
     Write-Information "Creating default launch configuration at $LaunchConfigPath"
@@ -194,6 +213,19 @@ if ($PSCmdlet.ShouldProcess($TaskConfigPath, "Create default task configuration"
 "@
     Set-Content -Path $TaskConfigPath -Value $TaskContent
 }
+
+$TaskConfigPath = Join-Path -Path $PSScriptRoot -ChildPath ".vscode/settings.json"
+if ($PSCmdlet.ShouldProcess($TaskConfigPath, "Create default settings configuration")) {
+    Write-Information "Creating default settings configuration at $TaskConfigPath"
+    $TaskContent = `
+        @"
+{
+    "npm.packageManager": "npm"
+}
+"@
+    Set-Content -Path $TaskConfigPath -Value $TaskContent
+}
+
 
 if (-not $WhatIfPreference) {
     Write-Information "You can now delete this script (Setup-Repo.ps1)" -InformationAction Continue

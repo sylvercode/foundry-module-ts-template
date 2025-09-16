@@ -16,4 +16,4 @@ Hooks.once("init", () => {
   }
 });
 
-HooksAttacher.attachHooks(ModuleHooks.HOOKS_DEFINITION_SET);
+HooksAttacher.attachHooks(ModuleHooks.HOOKS_DEFINITIONS_SET);
