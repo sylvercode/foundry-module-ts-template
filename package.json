@@ -2,16 +2,30 @@
   "name": "todo-module-id",
   "version": "1.0.0",
   "description": "todo-module-description",
+  "type": "module",
   "private": true,
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "build": "tsc && vite build",
     "watch": "tsc && vite build --watch"
   },
   "devDependencies": {
-    "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#main",
+    "@babel/core": "^8.0.1",
+    "@babel/eslint-parser": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.1",
+    "@eslint/js": "^9.33.0",
+    "@league-of-foundry-developers/foundry-vtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#18cf35ee2b3079e40fa55490acfbaeb449003d89",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/parser": "^8.66.0",
+    "eslint": "^9.33.0",
     "rollup-plugin-copy": "^3.5.0",
-    "sass": "^1.89.2",
+    "sass": "^1.102.0",
     "typescript": "^5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^8.2.0"
+  },
+  "allowScripts": {
+    "github:League-of-Foundry-Developers/foundry-vtt-types#18cf35ee2b3079e40fa55490acfbaeb449003d89": true,
+    "@parcel/watcher@2.5.1": true
   }
 }
