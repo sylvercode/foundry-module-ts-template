@@ -7,8 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build": "tsc && vite build",
-    "watch": "tsc && vite build --watch"
+    "build": "vite build --mode ${BUILD_MODE:-production}",
+    "watch": "vite build --watch --mode ${BUILD_MODE:-development}"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
